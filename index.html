@@ -1,0 +1,104 @@
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./index.js"></script>
+  <style>
+    .btnClass {
+      width: 100px;
+      height:100px;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    var isXturn = true;
+    $(document).ready(function () {
+      buttonClick();
+      });
+
+ 
+function buttonClick(){
+  $(".btnClass").click(function () {
+          if($(this).val()==""){
+            $(this).val(isXturn ? "X": "O");
+            isXturn = !isXturn;
+            
+           
+            checkWinner();
+        }
+        else{
+          return false;
+        }
+  });
+  if($(this).val()=="X"){
+              alert("O turn");
+            }
+            else{
+              alert("X turn");
+            }
+}
+
+function checkWinner(){
+  winningConditios("X");
+  winningConditios("0");
+}
+
+function winningConditios(player){
+  var a1,a2,a3,a4,a5,a6,a7,a8,a9;
+    a1 = $("#0").val();
+    a2 = $("#1").val();
+    a3 = $("#2").val();
+    a4 = $("#3").val();
+    a5 = $("#4").val();
+    a6 = $("#5").val();
+    a7 = $("#6").val();
+    a8 = $("#7").val();
+    a9 = $("#8").val();
+
+  if((a1==player && a2 == player && a3 == player) 
+        || (a1==player && a4 == player && a7 == player) 
+        || (a1==player && a5 == player && a9 == player)
+        || (a3==player && a6 == player && a9 == player)
+        || (a3==player && a5 == player && a7 == player)
+        || (a7==player && a8 == player && a9 == player)
+        || (a2==player && a5 == player && a8 == player)
+        || (a4==player && a5 == player && a6 == player)
+        )
+        
+        {
+        alert(player + " win");
+        location.reload();
+      } else if(a1 != ""  && a2 != ""  && a3 != ""  && a4 != ""  && a5 != ""  && a6 != ""  && a7 != ""  && a8 != ""  && a9 != "" ){
+        alert("draw");
+      }
+}
+
+  </script>
+</head>
+
+<body>
+  <div style="display:block;margin:100px auto;width: 25%;">
+
+    <table style="display: block;text-align: center;">
+      <tr>
+        <td><input type="button" class="btnClass" id="0"></td>
+        <td><input type="button" class="btnClass" id="1"></td>
+        <td><input type="button" class="btnClass" id="2"></td>
+      </tr>
+      <tr>
+        <td><input type="button" class="btnClass" id="3"></td>
+        <td><input type="button" class="btnClass" id="4"></td>
+        <td><input type="button" class="btnClass" id="5"></td>
+      </tr>
+      <tr>
+        <td><input type="button" class="btnClass" id="6"></td>
+        <td><input type="button" class="btnClass" id="7"></td>
+        <td><input type="button" class="btnClass" id="8"></td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
